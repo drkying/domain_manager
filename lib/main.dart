@@ -2,9 +2,15 @@ import 'package:domain_manager/pages/MyDomainsPage.dart';
 import 'package:domain_manager/pages/OverviewPage.dart';
 import 'package:domain_manager/pages/SettingsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:domain_manager/tools/database/hive_type/Domain.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(DomainAdapter());
   runApp(const MyApp());
+  Hive.close();
 }
 
 class MyApp extends StatelessWidget {
