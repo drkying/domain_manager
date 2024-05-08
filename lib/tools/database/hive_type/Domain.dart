@@ -23,4 +23,9 @@ class Domain {
   final DateTime lastUpdatedTime;
 
   Domain(this.id, this.name, this.domain, this.registrar, this.expiration, this.lastUpdatedTime);
+
+  @override
+  String toString() {
+    return 'Domain{id: $id, name: $name, domain: $domain, registrar: $registrar, expiration: $expiration, lastUpdatedTime: $lastUpdatedTime}';
+  }
 }
