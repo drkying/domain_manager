@@ -37,7 +37,7 @@ class _MyDomainsPage extends State<MyDomainsPage> {
                 'cloudflare',
                 DateTime.parse('2024-12-31'),
                 DateTime.parse('2024-04-18')); // Create a new Domain object
-            domainOperations.add(domain.id, domain);
+            domainOperations.add(domain, key:domain.id);
             print('Added domain with key: 1');
           },
           child: const Text('Add Domain'),

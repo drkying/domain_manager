@@ -12,8 +12,12 @@ class Operations<T> {
     box = await Hive.openBox<T>(databaseName);
   }
 
-  void add(int key, T item) {
-    box.put(key, item);
+  void add(T item, {int? key}) {
+    if (key != null) {
+      box.put(key, item);
+    } else {
+      box.add(item);
+    }
   }
 
   void delete(int key) {
@@ -26,6 +30,13 @@ class Operations<T> {
 
   T? retrieve(int key) {
     return box.get(key);
+  }
+
+  List<T> retrieveByProperty(String propertyName, dynamic value) {
+    return box.values.where((item) {
+      final itemAsMap = item as Map<String, dynamic>;
+      return itemAsMap[propertyName] == value;
+    }).toList();
   }
 
   List<T> retrieveAll() {
