@@ -27,4 +27,8 @@ class Operations<T> {
   T? retrieve(int key) {
     return box.get(key);
   }
+
+  List<T> retrieveAll() {
+    return box.values.toList();
+  }
 }
